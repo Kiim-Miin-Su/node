@@ -3,18 +3,17 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-      "start": "node 6_json.js",
-      "dev": "nodemon routing.js"
+        "start": "node 6_json.js",
+        "dev": "nodemon routing.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "description": "",
     "dependencies": {
-      "ejs": "^3.1.10",
-      "express": "^5.1.0",
-      "swagger-jsdoc": "^6.2.8",
-      "swagger-ui-express": "^5.0.1"
+        "ejs": "^3.1.10",
+        "express": "^5.1.0",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1"
     }
-  }
-  
+}
