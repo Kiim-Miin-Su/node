@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select skill</title>
+</head>
+
+<body>
+    <h2>select skill</h2>
+    <select name="skills" id="skills">
+        <option value="">select skills</option>
+
+    </select>
+</body>
+<script>
+    fetch("http://127.0.0.1:3000/")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("API request failed");
+            } else {
+                return response.json();
+            }
+        }).then((data) => {
+            const skills = document.getElementById("skills");
+            data.forEach((skill) => {
+                const option = document.createElement("option");
+                option.value = skill.id;
+                option.textContent = skill.name;
+                skills.appendChild(option);
+            })
+        }).catch((error) => {
+            console.error("Error:", error);
+        })
+</script>
+
+</html>
