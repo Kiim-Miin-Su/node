@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <form action="/users/sign_in" method="post">
+        <input type="text" name="input_user_id" placeholder="Username" required>
+        <input type="password" name="input_user_pw" placeholder="Password" required>
+        <input type="email" name="input_user_email" placeholder="Email" required>
+        <input type="text" name="input_user_name" placeholder="Name" required>
+        <input type="text" name="input_user_phone" placeholder="Phone Number" required>
+
+        <button type="submit">Change User</button>
+        <p>Already have an account? <a href="/">Sign In</a></p>
+    </form>
+</body>
+
+</html>

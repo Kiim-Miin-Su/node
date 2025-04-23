@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home_page</title>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <h1>Welcome to the home page</h1>
+    <p>This is a simple web application using Node.js and Express.</p>
+    <div class="form">
+        <form action="/users/sign_in" method="post">
+            <input type="text" name="input_user_id" placeholder="Username" id="input_user_id">
+            <input type="password" name="input_user_pw" placeholder="Password" id="input_user_pw">
+            <button type="submit" id="button_sign_in" onclick="return is_empty()">Sign In</button>
+
+            <form>
+                <button type="button" onclick="go_sign_up()">Sign Up</button>
+            </form>
+
+            <form>
+                <button type="button" onclick="change_user()">change user</button>
+            </form>
+
+            <form>
+                <button type="button" onclick="return delete_user()">delete user</button>
+            </form>
+    </div>
+</body>
+<script>
+    function go_sign_up() {
+        window.location.href = "/users/sign_up";
+    }
+    const button_sign_in = document.getElementById("button_sign_in");
+    function is_empty() {
+        const id = document.getElementById("input_user_id");
+        const pw = document.getElementById("input_user_pw");
+        if (id.value === "" || pw.value === "") {
+            alert("Please fill in all fields.");
+            return false;
+        }
+    }
+    function change_user() {
+        fetch("/users", { method: "PUT" })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                window.location.href = "/users/change_user"
+            })
+    }
+
+    function delete_user() {
+        const input_user_id = document.getElementById("input_user_id").value;
+        const input_user_pw = document.getElementById("input_user_pw").value;
+        if (input_user_id === "" || input_user_pw === "") {
+            alert("Please fill in all fields.");
+            return;
+        }
+        fetch("/users", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                input_user_id: input_user_id,
+                input_user_pw: input_user_pw
+            })
+        })
+            .then(res => res.json())
+            .then(data => alert("User deleted: " + JSON.stringify(data)));
+    }
+
+</script>
+
+</html>

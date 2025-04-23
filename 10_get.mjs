@@ -17,13 +17,14 @@ app.get("/", (request, response) => {
             response.send(data);
         }
     })
-})
+});
+
 app.get("/log_in", (request, response) => {
     console.log("log_in is called (GET)");
     console.log(request.query);
     response.status(200);
-})
+});
 
 app.listen(3000, () => { // call back function;
     console.log("Server is running on port 3000");
-})
+});
