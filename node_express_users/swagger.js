@@ -1,3 +1,4 @@
+// swagger.js
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
@@ -16,8 +17,13 @@ const options = {
             },
         ],
     },
-    apis: ['./routes/*.js'], // 주석 기반 문서화 경로
+    apis: ['./routes/*.js'], // Swagger 주석이 있는 파일 경로
 };
 
+// Swagger 명세 객체 생성
 const swaggerSpec = swaggerJsdoc(options);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// 🔥 app을 인자로 받아 등록하는 함수로 export
+module.exports = function (app) {
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+};
